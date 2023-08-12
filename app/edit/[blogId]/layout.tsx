@@ -1,10 +1,6 @@
-"use client"
-import { useContext } from 'react'
+
 import '../../globals.css'
-import { Metadata, ResolvingMetadata } from 'next'
-import { UserContext } from '@/app/context/usercontext'
-import { BlogPost } from '@/types'
-import { getBlog } from '@/lib/blog'
+import { Metadata } from 'next'
 
 
 type Params = {
@@ -13,23 +9,10 @@ type Params = {
     }
 }
 
-export async function generateMetadata(
-    { params: {blogId} }: Params,
-    parent?: ResolvingMetadata
-  ): Promise<Metadata> {
-    const blogData=await getBlog(blogId)
-    const blog = blogData
-    if(!blog){
-      return{
-        title:"Oops! Not Found",
-      }
-    }else{
-    return {
-      title: blog.title,
-      description: blog.content
-    }
-  }
-  }
+export const metadata: Metadata = {
+  title: 'vBlog - Edit your Blog',
+  description: 'blog project by vaxad',
+}
 export default function RootLayout({
   children,
 }: {
