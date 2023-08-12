@@ -15,12 +15,6 @@ export default function Login() {
     const router = useRouter()
     // const localtoken=localStorage.getItem('token')
 
-    useEffect(() => {
-      if(token!==""){
-        router.push('/')
-      }
-    }, [token,login])
-    
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
@@ -32,6 +26,7 @@ export default function Login() {
           setToken(res)
           const myData = await getMe(res)
           setUser(myData)
+          router.push('/')
         }
     }
 

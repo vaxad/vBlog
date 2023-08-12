@@ -13,14 +13,6 @@ export default function Login() {
     const [cpass, setcPass] = useState("")
     const [remember, setRemember] = useState(false)
     const router = useRouter()
-
-    useEffect(() => {
-      // console.log(token)
-      if(token!==""){
-        router.push('/')
-      }
-      
-    }, [token])
     
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) =>{
@@ -34,6 +26,7 @@ export default function Login() {
             setToken(res)
             const myData = await getMe(res)
             setUser(myData)
+            router.push('/')
           }
         
         }else{
