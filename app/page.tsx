@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     setLoc('')
-  }, [])
+  }, [setLoc])
   
   
   return (

@@ -14,6 +14,17 @@ export default function Navbar() {
   
   const {token, setToken,user,setUser} = useContext(UserContext)
   const [auth,setAuth] = useState(typeof window !== 'undefined' ?localStorage.getItem("token"):false)
+
+  
+  const router=useRouter()
+
+  const handleLogout = () =>{
+    router.push('/')
+    console.log("logout")
+    setToken('')
+    setUser(null)
+    localStorage.setItem('token','')
+  }
   
   useEffect(() => {
     // Perform localStorage action
@@ -24,11 +35,16 @@ export default function Navbar() {
     }
     if(token!==""&&token!==null){
         setAuth(true)
+        const handleToken=async () =>{
+            console.log("handletoken")
+            const myData = await getMe(token as string)
+            setUser(myData)
+          }
         handleToken()
     }else{
         setAuth(false)
     }
-  }, [token])
+  }, [token, setToken])
 
   useEffect(() => {
     if(loc.includes('viewBlogs')){
@@ -39,22 +55,7 @@ export default function Navbar() {
     
   }, [loc])
   
-  
 
-  const router=useRouter()
-
-
-  const handleToken=async () =>{
-    console.log("handletoken")
-    const myData = await getMe(token as string)
-    setUser(myData)
-  }
-  const handleLogout = () =>{
-    console.log("logout")
-    setToken('')
-    setUser(null)
-    localStorage.setItem('token','')
-  }
   return (
     <nav className="w-full sticky bg-gray-900">
                     <div className="py-5 md:py-0 container mx-auto px-6 flex items-center justify-between">

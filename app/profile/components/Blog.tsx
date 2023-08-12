@@ -1,9 +1,8 @@
 "use client"
 import { getUser } from '@/lib/user'
 import { BlogPost, User } from '@/types'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Spinner from './Spinner'
-import Loading from '../loading'
 import Link from 'next/link'
 import Dropdown from './Dropdown'
 import { getMe } from '@/lib/auth'
@@ -11,14 +10,21 @@ import { getMe } from '@/lib/auth'
 type Props = {
     blog : BlogPost
 }
-export default async function Blog({blog}:Props) {
-    
+export default function Blog({blog}:Props) {
+    const [creator,setCreator]=useState<User>()
+    const [res2,setRes2]=useState<User>()
 
-    const res = await getUser(blog.creator);
-    const creator:User=res  
-    const res2 = await getMe('')
-    console.log(creator._id===res2._id)
     
+   useEffect(() => {
+    const loadData=async()=>{
+      const res:User = await getUser(blog.creator);
+      setCreator(res)  
+      const resp:User = await getMe('')
+      console.log(resp)
+      setRes2(resp)
+    }
+     loadData()
+   }, [setCreator,setRes2])
     
 
     const content = blog.tags.map(e=>{

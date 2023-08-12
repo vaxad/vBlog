@@ -9,7 +9,7 @@ type Props = {
 }
 
 
-export default async function Comments({ blog, user, me }: Props) {
+export default function Comments({ blog, user, me }: Props) {
 
   return (
     <main>

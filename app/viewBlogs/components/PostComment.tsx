@@ -2,7 +2,7 @@
 import { UserContext } from '@/app/context/usercontext'
 import { getCommentsAbout, postCommentAbout } from '@/lib/comment'
 import { BlogPost, Comments, User } from '@/types'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { JSXElementConstructor, useContext, useEffect, useState } from 'react'
 import Comment from './Comment'
 
 type Props={
@@ -11,43 +11,50 @@ type Props={
     me:User
 }
 export default function PostComment({id,blog,me}:Props) {
-  const {comments, setComments} = useContext(UserContext)
+  const [comments, setComments]= useState<Comments[]>([])
     const [postComment,setPostComment]=useState('')
-
-    const handleComment=async()=>{
-      setPostComment('')
-        if(postComment.replaceAll(' ','')!==''){
-            const res = await postCommentAbout(id,postComment)
-            const resData:Comments=res
-            const cmnts:Comments[]=(comments as Comments[])
-            cmnts?.push(resData)
-            setComments(cmnts)
-            // alert('comment posted')
-            
-        }
-    }
+    const [content,setContent]=useState([<></>])
 
   useEffect(() => {
+    const getcmnts = async () => {
+
+      const res = await getCommentsAbout(blog._id)
+      console.log(res)
+      const resData:Comments[] = res
+      setComments(resData)
+      setContent(resData.map((e) => {
+        return(
+          <Comment key={e._id} e={e} me={me}/>
+        )
+    }))
+    }
     getcmnts()
     return () => {
       // Anything in here is fired on component unmount.
-      setComments(null)
+      setComments([])
     }
-  }, [])
+  }, [setComments,getCommentsAbout,setContent])
 
-  const getcmnts = async () => {
+  
 
-    const res = await getCommentsAbout(blog._id)
-    console.log(res)
-    const resData = res
-    setComments(resData)
+  const handleComment=async()=>{
+    setPostComment('')
+      if(postComment.replaceAll(' ','')!==''){
+          const res = await postCommentAbout(id,postComment)
+          const resData:Comments=res
+          console.log(resData)
+          const cmnts:Comments[]=(comments as Comments[])
+          cmnts.push(resData)
+          console.log(cmnts)
+          setComments(cmnts)
+          setContent(cmnts.map((e) => {
+            return(
+              <Comment key={e._id} e={e} me={me}/>
+            )
+        }))
+          // alert('comment posted')
+      }
   }
-
-  const content = comments?.map((e) => {
-      return(
-        <Comment e={e} me={me}/>
-      )
-  })
   return (
     <main>
         <div className="relative">

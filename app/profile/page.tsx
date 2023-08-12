@@ -12,7 +12,18 @@ export default function MyProfile() {
   const { setLoc, user } = useContext(UserContext)
   const [blogList, setBlogList] = useState<BlogPost[] | null>(null)
 
-  let content = blogList?.map(el => {
+  useEffect(() => {
+    setLoc('profile')
+    const loadBlogs = async () => {
+      const res = await getBlogBy(user?._id as string)
+      const newBlogList = res
+      console.log(newBlogList)
+      setBlogList(newBlogList)
+    }
+    loadBlogs()
+  }, [setBlogList,setLoc,getBlogBy])
+
+  const content = blogList?.map(el => {
     console.log(blogList)
     return (
       <div key={el._id} className=' py-4'>
@@ -20,18 +31,6 @@ export default function MyProfile() {
       </div>
     )
   })
-
-  useEffect(() => {
-    setLoc('profile')
-    loadBlogs()
-  }, [])
-
-  const loadBlogs = async () => {
-    const res = await getBlogBy(user?._id as string)
-    const newBlogList = res
-    console.log(newBlogList)
-    setBlogList(newBlogList)
-  }
 
 
   return !blogList ? (
@@ -49,7 +48,7 @@ export default function MyProfile() {
           <div className=' col-span-1 w-full m-4 overflow-hidden flex justify-start items-start'>
           <ProfileCard userShown={user as User}/>
           </div>
-          <div className=' text-slate-100 col-span-3 overflow-auto'>{content}
+          <div className=' text-slate-100 col-span-3 overflow-y-scroll'>{content}
           <div className=' w-full justify- text-xl items-center text-center text-gray-100 mt-10 pb-10'>
         <h1>Post more vBlogs!</h1>
         <Link href={'/makeBlog'}>

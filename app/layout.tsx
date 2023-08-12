@@ -2,8 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import Navbar from './components/Navbar'
-import Context from './context/context.js'
-import UserProvider, { UserContext } from './context/usercontext'
+import UserProvider from './context/usercontext'
 
 const monument = localFont({
   src: [

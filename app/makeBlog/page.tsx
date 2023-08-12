@@ -27,7 +27,7 @@ export default function MakeBlog() {
     if(!user){
       route.replace('/login')
     }
-  }, [user])
+  }, [user,route])
 
   const handleSubmit=async()=>{
     const str=tags.replaceAll(" ","")

@@ -15,25 +15,19 @@ type Params = {
         userId:string
     }
 }
-export default async function UserProfile({params:{userId}}:Params) {
+export default function UserProfile({params:{userId}}:Params) {
     const { setLoc, user } = useContext(UserContext)
     const me:User=user as User
   const [blogList, setBlogList] = useState<BlogPost[] | null>(null)
   const [userShown, setuserShown] = useState<User | null>(null)
 
   const content = blogList?.map(el => {
-    console.log(blogList)
     return (
       <div key={el._id} className=' py-4'>
         <Blog blog={el} />
       </div>
     )
   })
-
-  useEffect(() => {
-    setLoc('profile')
-    loadBlogs()
-  }, [])
 
   const loadBlogs = async () => {
     const userData= await getUser(userId)
@@ -45,11 +39,16 @@ export default async function UserProfile({params:{userId}}:Params) {
     setBlogList(newBlogList)
   }
 
+  useEffect(() => {
+    setLoc('profile')
+    loadBlogs()
+  }, [setLoc,loadBlogs])
+
 
   return !blogList ? (
     <Spinner />) : blogList.length === 0 ? (<main>
       <div className=' w-full justify- text-xl items-center text-center text-gray-100 mt-10  align-top'>
-        <ProfileCard userShown={user as User}/>
+        <ProfileCard userShown={userShown as User}/>
         <h1>{((userShown as User)._id===me._id)?'You have':'User has'} not posted any vBlogs yet!</h1>
         {((userShown as User)._id===me._id)&&<Link href={'/makeBlog'}>
           <button className="mt-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:text-indigo-700 hover:bg-white lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border border-indigo-700 py-2 sm:py-4 text-sm">Make a vBlog now!</button>

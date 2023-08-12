@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Suspense } from 'react'
 import Link from 'next/link'
 import { Metadata, ResolvingMetadata } from 'next'
@@ -38,11 +38,21 @@ import Spinner from '../components/Spinner'
   }
   export default async function Blog({params:{blogId}}:Params) {
     const {token,user,setLoc}=useContext(UserContext)
-    setLoc('blogs')
-    const blogData= await getBlog(blogId)
-    const blog: BlogPost= blogData
-    const userShownData=await getUser(blog?.creator)
-    const userShown:User=userShownData
+    const [userShown,setUserShown]=useState<User>()
+    const [blog,setBlog]=useState<BlogPost>()
+    
+    useEffect(() => {
+      setLoc('blogs')
+      const loadData=async()=>{
+        const blogData:BlogPost= await getBlog(blogId)
+      setBlog(blogData)
+      const userShownData=await getUser((blogData as BlogPost).creator)
+      setUserShown(userShownData)
+      }
+      loadData()
+    }, [getBlog,getUser,setBlog,setUserShown,setLoc])
+    
+    
 
     
     return !(userShown&&blog&&user)?(<Spinner/>):(

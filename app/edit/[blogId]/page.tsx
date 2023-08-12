@@ -28,12 +28,8 @@ type BlogPost = {
 export default function MakeBlog({ params: { blogId } }: Params) {
 
   const [blog, setBlog] = useState<BlogPost | null>(null)
-  useEffect(() => {
-    getBlg()
 
-  }, [])
-
-
+  
   const getBlg = async () => {
 
     const blogData: BlogPost = await getBlog(blogId)
@@ -45,6 +41,12 @@ export default function MakeBlog({ params: { blogId } }: Params) {
     setVisibility(blogData.public)
 
   }
+  useEffect(() => {
+    getBlg()
+
+  }, [getBlg])
+
+
 
   const [visibility, setVisibility] = useState(blog?.public.toString() === "true")
   const { user } = useContext(UserContext)
@@ -70,7 +72,7 @@ export default function MakeBlog({ params: { blogId } }: Params) {
       }
     }, 2000);
 
-  }, [user])
+  }, [user,route])
 
 
 

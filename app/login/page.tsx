@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React, { useContext, useEffect } from 'react'
 import { useState } from "react";
 import { UserContext } from '../context/usercontext';
@@ -19,7 +19,7 @@ export default function Login() {
       if(token!==""){
         router.push('/')
       }
-    }, [token])
+    }, [token,login])
     
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) =>{
