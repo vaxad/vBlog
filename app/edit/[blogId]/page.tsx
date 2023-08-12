@@ -28,32 +28,28 @@ type BlogPost = {
 export default function MakeBlog({ params: { blogId } }: Params) {
 
   const [blog, setBlog] = useState<BlogPost | null>(null)
-
   
-  const getBlg = async () => {
-
-    const blogData: BlogPost = await getBlog(blogId)
-    console.log(blogData)
-    setBlog(blogData)
-    setTitle(blogData.title)
-    setContent(blogData.content)
-    setTags(blogData.tags.toString())
-    setVisibility(blogData.public)
-
-  }
-  useEffect(() => {
-    getBlg()
-
-  }, [getBlg])
-
-
-
   const [visibility, setVisibility] = useState(blog?.public.toString() === "true")
   const { user } = useContext(UserContext)
   const route = useRouter()
   const [title, setTitle] = useState(blog?.title)
   const [content, setContent] = useState(blog?.content)
   const [tags, setTags] = useState(blog?.title)
+
+  useEffect(() => {
+    const getBlg = async () => {
+      const blogData: BlogPost = await getBlog(blogId)
+      console.log(blogData)
+      setBlog(blogData)
+      setTitle(blogData.title)
+      setContent(blogData.content)
+      setTags(blogData.tags.toString())
+      setVisibility(blogData.public)
+    }
+    getBlg()
+
+  }, [setBlog,setTags,setContent,setTitle,setVisibility,getBlog])
+
 
   const handleChange = () => {
     const checkbox = document.getElementById('checkbox') as HTMLInputElement | null;

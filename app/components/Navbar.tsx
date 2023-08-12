@@ -44,7 +44,7 @@ export default function Navbar() {
     }else{
         setAuth(false)
     }
-  }, [token, setToken])
+  }, [token, setToken,setUser])
 
   useEffect(() => {
     if(loc.includes('viewBlogs')){
