@@ -20,7 +20,7 @@ export default function Blog({blog}:Props) {
       const res:User = await getUser(blog.creator);
       setCreator(res)  
       const resp:User = await getMe('')
-      console.log(resp)
+      //(resp)
       setRes2(resp)
     }
      loadData()

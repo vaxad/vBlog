@@ -32,7 +32,7 @@ export default function Dropdown({blog}:Prop) {
 
   function handleShare() {
     const link=window.location.origin+'/viewBlogs/'+blog._id
-    // console.log(link)
+    // //(link)
     navigator.clipboard.writeText(link);
   
     // Alert the copied text

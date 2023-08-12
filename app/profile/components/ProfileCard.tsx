@@ -15,7 +15,7 @@ export default function ProfileCard({userShown}:Props) {
         setFollowed(true)
         userShown.followers.push((user as User)?._id)
         const resp=await followUser(userShown._id)
-        console.log(resp)
+        //(resp)
     }
 
     const handleUnfollow=async()=>{
@@ -25,7 +25,7 @@ export default function ProfileCard({userShown}:Props) {
         })
         userShown.followers=newFollowers
         const resp=await unfollowUser(userShown._id)
-        console.log(resp)
+        //(resp)
     }
 
     if(userShown._id===(user as User)._id){

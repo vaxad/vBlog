@@ -19,7 +19,7 @@ export default function PostComment({id,blog,me}:Props) {
     const getcmnts = async () => {
 
       const res = await getCommentsAbout(blog._id)
-      console.log(res)
+      //(res)
       const resData:Comments[] = res
       setComments(resData)
       setContent(resData.map((e) => {
@@ -42,10 +42,10 @@ export default function PostComment({id,blog,me}:Props) {
       if(postComment.replaceAll(' ','')!==''){
           const res = await postCommentAbout(id,postComment)
           const resData:Comments=res
-          console.log(resData)
+          //(resData)
           const cmnts:Comments[]=(comments as Comments[])
           cmnts.push(resData)
-          console.log(cmnts)
+          //(cmnts)
           setComments(cmnts)
           setContent(cmnts.map((e) => {
             return(
