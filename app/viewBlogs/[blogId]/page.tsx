@@ -36,7 +36,7 @@ import Spinner from '../components/Spinner'
           blogId:string
       }
   }
-  export default async function Blog({params:{blogId}}:Params) {
+  export default function Blog({params:{blogId}}:Params) {
     const {token,user,setLoc}=useContext(UserContext)
     const [userShown,setUserShown]=useState<User>()
     const [blog,setBlog]=useState<BlogPost>()
