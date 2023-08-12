@@ -58,8 +58,8 @@ export default function Navbar() {
   return (
     <nav className="w-full sticky bg-gray-900">
                     <div className="py-5 md:py-0 container mx-auto px-6 flex items-center justify-between">
-                        <div aria-label="Home. logo" role="img">
-                            <img className="w-12 md:w-auto" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/centre_aligned_simple-Svg1.svg" alt="logo" />
+                        <div aria-label="Home. logo"  role="img">
+                            <img className="w-24 h-24 md:w-auto" src="/logo.png" alt="logo" />
                         </div>
                         <div>
                             <button onClick={() => setShow(!show)} className={`${show ? 'hidden' : ''} sm:block md:hidden bg-slate-900 text-gray-100 hover:text-gray-400 focus:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400`}>

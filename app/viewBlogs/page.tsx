@@ -40,8 +40,7 @@ export default function ViewBlogs() {
     setBlogList(newBlogList)
    }
     
-  return !blogList?(
-  <Spinner/>):(
+  return (
     <main>
     <div className=' text-slate-100'>{content}</div>
     <div className=' flex items-center justify-center py-5 '>

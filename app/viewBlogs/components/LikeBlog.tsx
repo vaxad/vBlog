@@ -13,14 +13,14 @@ export default function LikeBlog({blog, me}:Props) {
     
     const handleLike = async() => {
         if(like==='fill-rose-400'){
-            const res = await unlikeBlog(blog._id)
             setLike('fill-white')
             setLikeCount(likeCount-1)
+            const res = await unlikeBlog(blog._id)
 
         }else{
-            const res = await likeBlog(blog._id)
             setLike('fill-rose-400')
             setLikeCount(likeCount+1)
+            const res = await likeBlog(blog._id)
         }
     }
   return (

@@ -4,6 +4,7 @@ import Comments from './Comments'
 import { likeBlog, unlikeBlog } from '@/lib/blog'
 import Spinner from './Spinner'
 import LikeBlog from './LikeBlog'
+import Link from 'next/link'
 
 type Props = {
     blog:BlogPost,
@@ -32,7 +33,7 @@ export default function ViewBlog({blog,user,me}:Props) {
           </div>
           <div className="flex flex-col">
             <div>
-              <div className="inline-block text-lg font-bold dark:text-white">{user?.name}</div>
+              <Link href={`/profile/${user._id}`} className="inline-block text-lg font-bold dark:text-white">{user?.name}</Link>
             </div>
             <div className="text-slate-500 dark:text-slate-400">
               {new Date(blog.date.toString()).toLocaleDateString()}

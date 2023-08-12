@@ -15,12 +15,12 @@ export default function PostComment({id,blog,me}:Props) {
     const [postComment,setPostComment]=useState('')
 
     const handleComment=async()=>{
+      setPostComment('')
         if(postComment.replaceAll(' ','')!==''){
-            const res:Comments = await postCommentAbout(id,postComment)
+            const res = await postCommentAbout(id,postComment)
             const resData:Comments=res
-            setPostComment('')
-            const cmnts=comments
-            cmnts?.push(res)
+            const cmnts:Comments[]=(comments as Comments[])
+            cmnts?.push(resData)
             setComments(cmnts)
             // alert('comment posted')
             
@@ -51,14 +51,17 @@ export default function PostComment({id,blog,me}:Props) {
   return (
     <main>
         <div className="relative">
+          <form>
         <input
           className="pt-2 pb-2 pl-3 w-full h-11 dark:text-slate-100 bg-slate-100 dark:bg-slate-600 rounded-lg placeholder:text-slate-300 dark:placeholder:text-slate-300 font-medium pr-20"
           type="text" value={postComment} onChange={e=>{setPostComment(e.target.value)}} placeholder="Write a comment" />
-        <span onClick={()=>{handleComment()}} className="flex absolute right-3 top-2/4 -mt-3 items-center">
+          
+        <button type='submit' onClick={(e)=>{e.preventDefault() ;handleComment()}} className="flex absolute right-3 top-2/4 -mt-3 items-center">
           <svg className={`fill-blue-500 ${postComment.replaceAll(' ','')===''?'fill-slate-400':'fill-slate-50'}`} style={{width: 24, height: 24}} viewBox="0 0 24 24">
             <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path>
           </svg>
-        </span>
+        </button>
+        </form>
       </div>
       <div className="pt-6">
         {content}

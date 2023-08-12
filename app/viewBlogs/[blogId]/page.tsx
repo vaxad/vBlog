@@ -37,7 +37,8 @@ import Spinner from '../components/Spinner'
       }
   }
   export default async function Blog({params:{blogId}}:Params) {
-    const {token,user}=useContext(UserContext)
+    const {token,user,setLoc}=useContext(UserContext)
+    setLoc('blogs')
     const blogData= await getBlog(blogId)
     const blog: BlogPost= blogData
     const userShownData=await getUser(blog?.creator)

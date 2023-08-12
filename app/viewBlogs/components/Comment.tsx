@@ -17,14 +17,14 @@ export default function Comment({e, me}:Props) {
 
     const handleLike = async () => {
       if (like) {
-        const res = await unlikeComment(e._id)
         setLike(false)
         setLikeCount(likeCount - 1)
+        const res = await unlikeComment(e._id)
 
       } else {
-        const res = await likeComment(e._id)
         setLike(true)
         setLikeCount(likeCount + 1)
+        const res = await likeComment(e._id)
       }
     }
 
@@ -35,7 +35,7 @@ export default function Comment({e, me}:Props) {
         </a>
         <div className="media-body">
           <div>
-            <Link className="inline-block text-base font-bold mr-2 text-slate-200" href={`/users/${e.by}`}>{e.commentor.name}</Link>
+            <Link className="inline-block text-base font-bold mr-2 text-slate-200" href={`/profile/${e.by}`}>{e.commentor.name}</Link>
             <span className="text-slate-500 dark:text-slate-300">{new Date(e.date.toString()).toLocaleDateString()}</span>
           </div>
           <p className='text-slate-200'>{e.content}</p>

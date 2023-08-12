@@ -11,6 +11,8 @@ type UserLogin = {
     "password":string
 }
 
+let token: string
+
 export async function signup(data:UserSignup) {
     try{
     const res =  await fetch("https://vblog-qz53.onrender.com/api/auth/",{
@@ -25,6 +27,7 @@ export async function signup(data:UserSignup) {
         if(res.ok){
         const result = await res.json()
         localStorage.setItem("token", result.authToken)
+        token=result.authToken
         return (result.authToken)
         }else{
             return null
@@ -49,6 +52,7 @@ export async function login(data:UserLogin) {
         if(res.ok){
         const result = await res.json()
         localStorage.setItem("token",result.authToken)
+        token=result.authToken
         return (result.authToken)
         }else{
             return null
@@ -62,6 +66,7 @@ export async function login(data:UserLogin) {
 export function logout (){
     try{
     localStorage.setItem("token",'')
+    token=''
     return ''
     console.log("logout")
     }catch(e){
@@ -70,14 +75,21 @@ export function logout (){
 
   }
 
-  export async function getMe(token:string) {
+  export async function getMe(authToken:string) {
     try{
-        console.log(token)
+        let Token=token as string
+        if(Token===""||typeof Token==="undefined"){
+            Token=authToken
+        }
+        if(Token===""||typeof Token==="undefined"){
+            Token=localStorage.getItem('token') as string
+        }
+        console.log(Token)
     const res =  await fetch("https://vblog-qz53.onrender.com/api/auth/",{
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
-                'auth-token':token
+                'auth-token':Token
             }
         })
         console.log(res)

@@ -6,14 +6,19 @@ import Spinner from './Spinner'
 import Loading from '../loading'
 import Link from 'next/link'
 import Dropdown from './Dropdown'
+import { getMe } from '@/lib/auth'
 
 type Props = {
     blog : BlogPost
 }
 export default async function Blog({blog}:Props) {
     
+
     const res = await getUser(blog.creator);
     const creator:User=res  
+    const res2 = await getMe('')
+    console.log(creator._id===res2._id)
+    
     
 
     const content = blog.tags.map(e=>{
@@ -21,16 +26,16 @@ export default async function Blog({blog}:Props) {
             <span key={e} className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{e}</span>
         )
     })
-  return !creator?(<main>
+  return !(creator&&res2)?(<main>
     <Spinner/>
     </main>):(
     <main >
     <div className=' flex items-center justify-center'>
         
-<div id='blogCard' className=" w-3/4 p-6 bg-white border hover:bg-indigo-600 hover:text-slate-900 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div id='blogCard' className=" w-full mx-8 p-6 bg-white border hover:bg-indigo-600 hover:text-slate-900 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
     <div className='flex justify-between'>
-    <Link href={`/profile/${blog._id}`}>
+    <Link href={`/viewBlogs/${blog._id}`}>
     <div className='flex py-2'>
     <div className="align-middle">
             <img className="rounded-full max-w-none w-12 h-12" src="/pfp3.jpg" />
@@ -44,13 +49,13 @@ export default async function Blog({blog}:Props) {
 
       {/* <h1 className=' text-white' id="dropdownDefaultButton" data-dropdown-toggle="dropdown">...</h1> */}
 
-      <Dropdown blog={blog}/>
+      {(creator._id===res2._id)&&<Dropdown blog={blog}/>}
 
 
       </div>
         </div>
 
-        <Link href={`/profile/${blog._id}`}>
+        <Link href={`/viewBlogs/${blog._id}`}>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 block break-words">{blog.content.length>400?blog.content.slice(0,400)+"...":blog.content}</p>
     
     <div className=' flex flex-row my-2 justify-between'>
