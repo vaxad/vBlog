@@ -19,7 +19,7 @@ export default function Navbar() {
 
   const handleLogout = () =>{
     router.push('/')
-    console.log("logout")
+    //("logout")
     setToken('')
     setUser(null)
     localStorage.setItem('token','')
@@ -35,7 +35,7 @@ export default function Navbar() {
     if(token!==""&&token!==null){
         setAuth(true)
         const handleToken=async () =>{
-            console.log("handletoken")
+            //("handletoken")
             const myData = await getMe(token as string)
             setUser(myData)
           }

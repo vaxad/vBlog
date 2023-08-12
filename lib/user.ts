@@ -16,13 +16,13 @@ export async function getUser(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
 }
 
@@ -37,13 +37,13 @@ export async function followUser(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
 }
 
@@ -58,13 +58,13 @@ export async function unfollowUser(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
 }
 

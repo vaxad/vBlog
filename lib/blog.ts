@@ -40,7 +40,7 @@ export async function postBlog(data:BlogPost) {
             return false
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -64,7 +64,7 @@ export async function editBlog(data:EditBlog) {
             return false
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -81,13 +81,13 @@ export async function getBlogs() {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -103,13 +103,13 @@ export async function getBlog(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -125,13 +125,13 @@ export async function deleteBlog(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -147,13 +147,13 @@ export async function getBlogBy(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -169,13 +169,13 @@ export async function getAllBlogs() {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -191,13 +191,13 @@ export async function likeBlog(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -213,13 +213,13 @@ export async function unlikeBlog(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }

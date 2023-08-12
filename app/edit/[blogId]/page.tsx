@@ -39,7 +39,7 @@ export default function MakeBlog({ params: { blogId } }: Params) {
   useEffect(() => {
     const getBlg = async () => {
       const blogData: BlogPost = await getBlog(blogId)
-      console.log(blogData)
+      //(blogData)
       setBlog(blogData)
       setTitle(blogData.title)
       setContent(blogData.content)
@@ -53,7 +53,7 @@ export default function MakeBlog({ params: { blogId } }: Params) {
 
   const handleChange = () => {
     const checkbox = document.getElementById('checkbox') as HTMLInputElement | null;
-    console.log(checkbox?.checked)
+    //(checkbox?.checked)
     if (checkbox?.checked) {
       setVisibility(true)
     } else {

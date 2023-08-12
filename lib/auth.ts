@@ -33,7 +33,7 @@ export async function signup(data:UserSignup) {
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -59,7 +59,7 @@ export async function login(data:UserLogin) {
         }
         
     }catch(e){
-        console.log(e)
+        //(e)
     }
 }
 
@@ -68,9 +68,9 @@ export function logout (){
     localStorage.setItem("token",'')
     token=''
     return ''
-    console.log("logout")
+    //("logout")
     }catch(e){
-      console.log(e)
+      //(e)
     }
 
   }
@@ -84,7 +84,7 @@ export function logout (){
         if(Token===""||typeof Token==="undefined"){
             Token=localStorage.getItem('token') as string
         }
-        console.log(Token)
+        //(Token)
     const res =  await fetch("https://vblog-qz53.onrender.com/api/auth/",{
             method: 'GET',
             headers: {
@@ -92,7 +92,7 @@ export function logout (){
                 'auth-token':Token
             }
         })
-        console.log(res)
+        //(res)
         if(res.ok){
         const result = await res.json()
         return (result)
@@ -100,7 +100,7 @@ export function logout (){
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }

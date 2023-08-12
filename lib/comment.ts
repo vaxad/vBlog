@@ -21,13 +21,13 @@ export async function postCommentAbout(id:string,content:string) {
 
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -44,13 +44,13 @@ export async function getCommentsAbout(id:string) {
 
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -66,13 +66,13 @@ export async function likeComment(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }
@@ -88,13 +88,13 @@ export async function unlikeComment(id:string) {
         })
         if(res.ok){
         const result = await res.json()
-        // console.log(result)
+        // //(result)
         return result
         }else{
             return null
         }
     }catch(e){
-        console.log(e)
+        //(e)
     }
   
 }

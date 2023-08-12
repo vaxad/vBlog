@@ -35,7 +35,7 @@ export default function UserProfile({params:{userId}}:Params) {
     setuserShown(userShowed)
     const res = await getBlogBy(userId)
     const newBlogList = res
-    console.log(newBlogList)
+    //(newBlogList)
     setBlogList(newBlogList)
   }
 

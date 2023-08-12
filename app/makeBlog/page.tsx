@@ -15,7 +15,7 @@ export default function MakeBlog() {
 
   const handleChange = () =>{
   const checkbox = document.getElementById('checkbox') as HTMLInputElement | null;
-    console.log(checkbox?.checked)
+    //(checkbox?.checked)
     if(checkbox?.checked){
       setVisibility(true)
     }else{

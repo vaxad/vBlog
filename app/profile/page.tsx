@@ -17,14 +17,14 @@ export default function MyProfile() {
     const loadBlogs = async () => {
       const res = await getBlogBy(user?._id as string)
       const newBlogList = res
-      console.log(newBlogList)
+      //(newBlogList)
       setBlogList(newBlogList)
     }
     loadBlogs()
   }, [setBlogList,setLoc,getBlogBy])
 
   const content = blogList?.map(el => {
-    console.log(blogList)
+    //(blogList)
     return (
       <div key={el._id} className=' py-4'>
         <Blog blog={el} />
