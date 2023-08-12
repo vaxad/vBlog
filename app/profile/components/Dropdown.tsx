@@ -73,15 +73,16 @@ export default function Dropdown({blog}:Prop) {
             </Menu.Item>
             <Menu.Item>
               {({ active }:Props) => (
-                <div
-                 onClick={()=>{route.push(`edit/${blog._id}`)}} 
+                <Link
+                href={`/edit/${blog._id}`}
+                //  onClick={()=>{route.push(`edit/${blog._id}`)}} 
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}
                 >
                   Edit
-                </div>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
