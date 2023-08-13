@@ -29,7 +29,7 @@ export default function Blog({blog}:Props) {
 
     const content = blog.tags.map(e=>{
         return(
-            <span className=" bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 my-1 rounded dark:bg-blue-900 dark:text-blue-300">{e}</span>
+            <span key={e} className=" bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 my-1 rounded dark:bg-blue-900 dark:text-blue-300">{e}</span>
         )
     })
   return !(creator&&res2)?(<main>
