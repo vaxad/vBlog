@@ -34,7 +34,7 @@ export default function Dropdown({blogId}:Prop) {
       <main>
         <Menu.Button className="w-full  justify-center items-center flex">
           
-        <button className="text-white block border border-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm  px-5 py-2.5 text-center dark:bg-transparent dark:hover:bg-red-700 dark:focus:ring-red-800">Delete vBlog</button>
+        <button className="text-white block border border-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg lg:text-sm text-xs  px-5 py-2.5 text-center dark:bg-transparent dark:hover:bg-red-700 dark:focus:ring-red-800">Delete vBlog</button>
   
         </Menu.Button>
       </main>
@@ -48,7 +48,7 @@ export default function Dropdown({blogId}:Prop) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0  z-10 mt-2 w-56 origin-bottom-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0  mt-2 w-56 origin-bottom-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1"
           onClick={()=>{
             handleDelete()
@@ -58,7 +58,7 @@ export default function Dropdown({blogId}:Prop) {
                 <div
                   className={classNames(
                     active ? 'bg-gray-100 text-red-700' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
+                    'block px-4 py-2 lg:text-sm text-xs'
                   )}
                 >
                   Confirm delete
@@ -71,7 +71,7 @@ export default function Dropdown({blogId}:Prop) {
                   
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
+                    'block px-4 py-2 lg:text-sm text-xs'
                   )}
                 >
                   Cancel

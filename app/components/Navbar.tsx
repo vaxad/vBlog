@@ -56,12 +56,12 @@ export default function Navbar() {
   
 
   return (
-    <nav className="w-full sticky bg-gray-900">
-                    <div className="py-5 md:py-0 container mx-auto px-6 flex items-center justify-between">
+    <nav className="w-full sticky bg-gray-900 z-50">
+                    <div className="lg:py-2 md:py-0 container mx-auto px-6 flex items-center justify-between">
                         <div aria-label="Home. logo"  role="img">
                             <img className="w-24 h-24 md:w-auto" src="/logo.png" alt="logo" />
                         </div>
-                        <div>
+                        <div className='flex w-9/12 lg:justify-center lg:items-center justify-end items-end'>
                             <button onClick={() => setShow(!show)} className={`${show ? 'hidden' : ''} sm:block md:hidden bg-slate-900 text-gray-100 hover:text-gray-400 focus:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400`}>
                                 <svg aria-haspopup="true" aria-label="open Main Menu" xmlns="http://www.w3.org/2000/svg" className="md:hidden icon icon-tabler icon-tabler-menu" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round">
                                     <path stroke="none" d="M0 0h24v24H0z" />
@@ -70,7 +70,7 @@ export default function Navbar() {
                                 </svg>
                             </button>
                             <div id="menu" className={` ${show ? '' : 'hidden'} md:block lg:block `}>
-                                <button onClick={() => setShow(!show)} className={`block md:hidden lg:hidden bg-slate-900 text-gray-100 hover:text-gray-400 focus:text-gray-400 fixed focus:outline-none focus:ring-2 focus:ring-gray-400 z-30 top-0 mt-6`}>
+                                <button onClick={() => setShow(!show)} className={`block md:hidden lg:hidden bg-slate-900 text-gray-100 hover:text-gray-400 focus:text-gray-400 fixed focus:outline-none focus:ring-2 focus:ring-gray-400 z-30 top-0 mt-6 mr-8`}>
                                     <svg aria-label="close main menu" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" />
                                         <line x1={18} y1={6} x2={6} y2={18} />
@@ -79,13 +79,18 @@ export default function Navbar() {
                                 </button>
                                 <ul className="flex text-3xl md:text-base items-center py-10 md:flex flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-slate-950 md:bg-transparent z-20">
                                     <li className={`${loc===''?"text-gray-100":"text-gray-400"} hover:text-gray-100 cursor-pointer text-base lg:text-lg pt-10 md:pt-0`}>
-                                        <Link href="/" onClick={()=>{setLoc('')}}>Home</Link>
+                                        <Link href="/" onClick={()=>{setLoc('');setShow(!show)}}>Home</Link>
                                     </li>
                                     <li className={`${loc==='blogs'?"text-gray-100":"text-gray-400"} hover:text-gray-100 cursor-pointer text-base lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10`}>
-                                        <Link href="/viewBlogs" onClick={()=>{setLoc('blogs')}}>Blogs</Link>
+                                        <Link href="/viewBlogs" onClick={()=>{setLoc('blogs');setShow(!show)}}>Blogs</Link>
                                     </li>
                                     <li className={`${loc==='profile'?"text-gray-100":"text-gray-400"} hover:text-gray-100 cursor-pointer text-base lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10`}>
-                                        <Link href="/profile" onClick={()=>{setLoc('profile')}}>Profile</Link>
+                                        <Link href="/profile" onClick={()=>{setLoc('profile');setShow(!show)}}>Profile</Link>
+                                    </li>
+                                    <li className={`${loc==='profile'?"text-gray-100":"text-gray-400"} hover:text-gray-100 cursor-pointer lg:hidden text-base lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10`}>
+                                    {!auth?<Link href="/login" onClick={()=>{setLoc('home');setShow(!show)}}>Log in</Link>
+                                    :<p onClick={()=>{handleLogout();setLoc('home');setShow(!show)}}>Log out</p>
+                                    }
                                     </li>
                                 </ul>
                             </div>

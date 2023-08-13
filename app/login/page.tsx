@@ -32,7 +32,7 @@ export default function Login() {
 
   return (
   <div className=' w-full items-center justify-center flex py-4'>
-<form className=' w-2/4 ' onSubmit={e=>handleSubmit(e)}>
+<form className=' lg:w-2/4 w-3/4' onSubmit={e=>handleSubmit(e)}>
   <div className="mb-6 ">
     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
     <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required/>

@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='bg-slate-950'>
-      <body className={`${monument.variable} font-sans bg-transparent max-h-screen`}>
+      <body className={`${monument.variable} font-sans bg-transparent max-h-screen overflow-x-hidden`}>
         <UserProvider>
         <Navbar/>
         {children}

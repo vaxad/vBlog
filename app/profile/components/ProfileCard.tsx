@@ -31,7 +31,7 @@ export default function ProfileCard({userShown}:Props) {
     if(userShown._id===(user as User)._id){
   return userShown&&(
     <main className='flex justify-center items-center'>
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex justify-center items-center p-3">
+    <div className="w-11/12 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex justify-center items-center p-3">
 
         <div className="flex flex-col items-center pb-10 pt-4 p-4">
             <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="/pfp3.jpg" alt="Bonnie image"/>

@@ -35,10 +35,10 @@ export default function Comment({e, me}:Props) {
         </a>
         <div className="media-body">
           <div>
-            <Link className="inline-block text-base font-bold mr-2 text-slate-200" href={`/profile/${e.by}`}>{e.commentor.name}</Link>
-            <span className="text-slate-500 dark:text-slate-300">{new Date(e.date.toString()).toLocaleDateString()}</span>
+            <Link className="inline-block lg:text-base text-sm font-bold mr-2 text-slate-200" href={`/profile/${e.by}`}>{e.commentor.name}</Link>
+            <span className="text-slate-500 dark:text-slate-300 lg:text-base text-sm">{new Date(e.date.toString()).toLocaleDateString()}</span>
           </div>
-          <p className='text-slate-200'>{e.content}</p>
+          <p className='text-slate-200 lg:text-base text-xs'>{e.content}</p>
           <div className="mt-2 flex items-center">
             <div className="inline-flex items-center py-2 mr-3" onClick={()=>{handleLike()}}>
               <span className="mr-2">

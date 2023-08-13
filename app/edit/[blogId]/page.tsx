@@ -87,8 +87,8 @@ export default function MakeBlog({ params: { blogId } }: Params) {
 
   return !(user && blog) ? (<><Spinner /></>) : (
     <main className=' p-10'>
-      <div className=' flex items-center justify-between pb-5'>
-      <button onClick={()=>{route.back()}} className="text-white block border border-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  px-5 py-2.5 text-center dark:bg-transparent dark:hover:bg-blue-700 dark:focus:ring-blue-800">Discard changes</button>
+      <div className=' flex items-center justify-between pb-5 gap-5'>
+      <button onClick={()=>{route.back()}} className="text-white block border border-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg lg:text-sm text-xs  lg:px-5 px-2 py-2.5 text-center dark:bg-transparent dark:hover:bg-blue-700 dark:focus:ring-blue-800">Discard changes</button>
   
         <Dropdown blogId={blogId}/>
         
