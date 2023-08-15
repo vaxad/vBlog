@@ -48,7 +48,7 @@ export default function UserProfile({params:{userId}}:Params) {
   return !blogList ? (
     <Spinner />) : blogList.length === 0 ? (<main>
         <div className=' w-full justify- text-xl items-center text-center text-gray-100 mt-10  align-top'>
-        <ProfileCard userShown={user as User}/>
+        <ProfileCard userShown={userShown as User}/>
         {((userShown as User)._id===me._id)&&<Link href={'/makeBlog'}>
           <button className="mt-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:text-indigo-700 hover:bg-white lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border border-indigo-700 py-2 sm:py-4 text-sm">Make a vBlog now!</button>
         </Link>}
@@ -58,7 +58,7 @@ export default function UserProfile({params:{userId}}:Params) {
     <main>
         <div className='profile grid lg:grid-flow-col-dense lg:grid-cols-4 lg:grid-rows-1 h-screen overflow-hidden p-2'>
           <div className=' col-span-1 w-fit z-10 overflow-hidden flex justify-start items-start'>
-          <ProfileCard userShown={user as User}/>
+          <ProfileCard userShown={userShown as User}/>
           </div>
           <div className=' text-slate-100 col-span-3 overflow-y-scroll w-full flex flex-col items-end px-8'><div className='w-full'>{content}</div>
           {((userShown as User)._id===me._id)&&<div className=' w-full justify-center text-xl items-center text-center text-gray-100 mt-10 pb-10'>
